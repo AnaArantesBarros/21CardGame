@@ -10,8 +10,6 @@ def criar_jogadores(quantidade_jogadores:int):
 
   return lista_nomes
 
-def turno():
-    'info'
 def start_game():
     print('Bem Vindo! Vamos comecar nosso jogo! ')
     print('Quantas pessoas väo jogar?')
