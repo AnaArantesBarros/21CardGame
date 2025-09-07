@@ -15,7 +15,7 @@ class Baralho:
     
     def tiraragem_inicial(self):
         cartas = (self.cartas.pop(), self.cartas.pop())
-        print('Cartas inicias:', cartas)
+        print('Cartas inicias :', cartas)
         return cartas# retorna qual carta foi tirada
     
     def resetar(self):
@@ -28,4 +28,4 @@ if __name__ == '__main__':
 
     jogador1 = Jogador('ANA')
     jogador1.adc_pontos(baralho.tiraragem_inicial())
-    #sprint(baralho.tiraragem_inicial())
+    print(baralho.tiraragem_inicial())

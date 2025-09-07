@@ -29,6 +29,7 @@ class Jogador:
 
             self.pontuacao += valor
             self.checar_estado()
+        return self.checar_estado()
 
 
 
