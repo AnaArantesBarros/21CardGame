@@ -1,40 +1,32 @@
-from utils.jogo import Jogo
-from utils.jogadores import Jogador
+from utils.jogo import Jogo, criar_jogadores
 
-def criar_jogadores(quantidade_jogadores:int):
-  lista_nomes = []
-  for j in range(1, int(quantidade_jogadores)+1):
-    print(f'Insira o nome do jogador {j}:')
-    nome = input()
-    lista_nomes.append(Jogador(nome)) 
-
-  return lista_nomes
 
 def start_game():
-    print('Bem Vindo! Vamos comecar nosso jogo! ')
-    print('Quantas pessoas väo jogar?')
-    quantidade_jogadores = input()
+    print('Bem Vindo! Vamos começar nosso jogo! ')
+    quantidade_jogadores = int(input('Quantas pessoas vão jogar? '))
 
     jogadores = criar_jogadores(quantidade_jogadores)
-
     novo_jogo = Jogo(jogadores)
-    print('\n O que preferem fazer agora? ("comprar" ou "parar")')
-    status_jogo = ''
-    while status_jogo != 'Venceu' or status_jogo != 'Perdeu':
+
+    print('\nO que preferem fazer agora? ("comprar" ou "parar")')
+
+    while any(jogador.status == "Jogando" for jogador in jogadores):
         for jogador in jogadores:
-           acao = input(f'Jogador {jogador.nome}: \n')
+            if jogador.status != "Jogando":
+                continue
 
-           if acao.lower() == 'comprar':
-              status_jogo = novo_jogo.tirar_carta_para_jogador(jogador)
+            acao = input(f'Jogador {jogador.nome}, sua vez: ')
 
-           if acao.lower() == 'stop':
-              status_jogo = novo_jogo.tirar_carta_para_jogador(jogador)
+            if acao.lower() == 'comprar':
+                novo_jogo.tirar_carta_para_jogador(jogador)
+                jogador.checar_estado()
 
-    #novo_jogo.tirar_carta_para_jogador()
+            elif acao.lower() == 'parar':
+                jogador.status = 'Fora'
 
-    
-
+    print('\nFim de jogo! Aqui está o resultado:')
+    for jogador in jogadores:
+        print(f'{jogador.nome.title()}: {jogador.checar_estado(silencio = True)}')
 
 
 start_game()
-    
