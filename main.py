@@ -11,7 +11,7 @@ def criar_jogadores(quantidade_jogadores:int):
   return lista_nomes
 
 def turno():
-    ''
+    'info'
 def start_game():
     print('Bem Vindo! Vamos comecar nosso jogo! ')
     print('Quantas pessoas väo jogar?')
@@ -25,8 +25,10 @@ def start_game():
     while status_jogo != 'Venceu' or status_jogo != 'Perdeu':
         for jogador in jogadores:
            acao = input(f'Jogador {jogador.nome}: \n')
+
            if acao.lower() == 'comprar':
               status_jogo = novo_jogo.tirar_carta_para_jogador(jogador)
+
            if acao.lower() == 'stop':
               status_jogo = novo_jogo.tirar_carta_para_jogador(jogador)
 
