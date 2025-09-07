@@ -1,2 +1,3 @@
 # 21CardGame
 Jogo de 21 com programação orientada a objetos.
+-Em construcao...
